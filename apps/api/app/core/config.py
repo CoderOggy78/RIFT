@@ -5,6 +5,23 @@ from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+from pathlib import Path
+
+_DETECTED_REPO_ROOT = (
+    "/Users/oggy/RIFT"
+    if os.path.exists("/Users/oggy/RIFT")
+    else str(Path(__file__).resolve().parents[4])
+)
+
+
+def _get_default_database_url() -> str:
+    if os.environ.get("VERCEL"):
+        return "sqlite:////tmp/rift.db"
+    if os.path.exists("/Users/oggy/RIFT/rift.db"):
+        return "sqlite:////Users/oggy/RIFT/rift.db"
+    return f"sqlite:///{_DETECTED_REPO_ROOT}/rift.db"
+
+
 class Settings(BaseSettings):
     PROJECT_NAME: str = "RIFT API"
     VERSION: str = "0.1.0"
@@ -17,7 +34,7 @@ class Settings(BaseSettings):
 
     # Database
     DATABASE_URL: str = Field(
-        default="sqlite:////Users/oggy/RIFT/rift.db",
+        default_factory=_get_default_database_url,
         description="SQLAlchemy database connection string"
     )
 
@@ -59,10 +76,16 @@ class Settings(BaseSettings):
     # Optional Codebase Knowledge (Graphify)
     ENABLE_CODEBASE_KNOWLEDGE: bool = Field(default=True, alias="RIFT_ENABLE_CODEBASE_KNOWLEDGE")
     GRAPHIFY_EXECUTABLE_PATH: Optional[str] = Field(default="/Users/oggy/.local/bin/graphify", alias="RIFT_GRAPHIFY_EXECUTABLE")
-    GRAPHIFY_GRAPH_PATH: str = Field(default="/Users/oggy/RIFT/graphify-out/graph.json", alias="RIFT_GRAPHIFY_GRAPH_PATH")
+    GRAPHIFY_GRAPH_PATH: str = Field(
+        default_factory=lambda: os.path.join(_DETECTED_REPO_ROOT, "graphify-out", "graph.json"),
+        alias="RIFT_GRAPHIFY_GRAPH_PATH"
+    )
     GRAPHIFY_TIMEOUT_SECONDS: int = 15
     GRAPHIFY_MAX_QUERY_BUDGET: int = 4000
-    REPO_ROOT: str = Field(default="/Users/oggy/RIFT", alias="RIFT_REPO_ROOT")
+    REPO_ROOT: str = Field(
+        default_factory=lambda: _DETECTED_REPO_ROOT,
+        alias="RIFT_REPO_ROOT"
+    )
 
     model_config = SettingsConfigDict(
         env_file=("/Users/oggy/RIFT/.env", ".env"),

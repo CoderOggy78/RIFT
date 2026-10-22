@@ -211,6 +211,8 @@ describe('Graphify Interactive Explorer UI Component', () => {
         },
       ],
       summary: 'Impact on 1 file',
+      limitations: [],
+      duration_ms: 5.2,
     });
   });
 
