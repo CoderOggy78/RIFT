@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: #E5E7EB;
+  }
+  
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #F8F9FA;
+    color: #1F2937;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: none;
+  }
+
+  /* Refined, modern Google Antigravity style scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9CA3AF;
+  }
+}
+
+/* Antigravity design system interactive utilities */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.125rem;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #FFFFFF;
+  background-color: #1A73E8;
+  border-radius: 9999px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px 0 rgba(26, 115, 232, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: #1557B0;
+  box-shadow: 0 4px 12px 0 rgba(26, 115, 232, 0.3);
+  transform: translateY(-0.5px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.125rem;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #FFFFFF;
+  background-color: #202124;
+  border-radius: 9999px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.btn-dark:hover {
+  background-color: #000000;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+  transform: translateY(-0.5px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.125rem;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #374151;
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 9999px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+}
+
+.btn-secondary:hover {
+  background-color: #F9FAFB;
+  border-color: #9CA3AF;
+  color: #111827;
+  transform: translateY(-0.5px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Antigravity Card Container */
+.card-antigravity {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease-in-out;
+}
+
+.card-antigravity:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* React Flow Light Theme Enhancements */
+.react-flow__renderer {
+  background-color: #F8F9FA !important;
+}
+
+.react-flow__node {
+  border-radius: 0.75rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #1A73E8;
+  border: 2px solid #FFFFFF;
+}
+
+.react-flow__edge-path {
+  stroke: #9CA3AF;
+  stroke-width: 1.5;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #1A73E8;
+  stroke-width: 2.5;
+}

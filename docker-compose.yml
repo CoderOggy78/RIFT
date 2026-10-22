@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    ports:
+      - "${RIFT_API_PORT:-8000}:8000"
+    volumes:
+      - rift-data:/data
+    environment:
+      - DATABASE_URL=sqlite:////data/rift.db
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      - GEMMA_MODEL=${GEMMA_MODEL:-gemma2:9b}
+      - CORS_ORIGINS=http://localhost:${RIFT_WEB_PORT:-5173},http://127.0.0.1:${RIFT_WEB_PORT:-5173}
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    ports:
+      - "${RIFT_WEB_PORT:-5173}:5173"
+    environment:
+      - VITE_API_BASE_URL=http://localhost:${RIFT_API_PORT:-8000}
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  rift-data:

@@ -1,0 +1,229 @@
+{
+  "summary": {
+    "fixtures_count": 11,
+    "incident_precision": 1.0,
+    "incident_recall": 1.0,
+    "incident_f1": 1.0,
+    "rule_precision": 1.0,
+    "rule_recall": 1.0,
+    "rule_f1": 1.0,
+    "first_suspicious_event_accuracy": 1.0,
+    "incident_metrics": {
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "tn": 1
+    },
+    "rule_metrics": {
+      "tp": 16,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "per_rule_breakdown": {
+    "RULE-001": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "RULE-002": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "RULE-003": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "RULE-004": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "RULE-005": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "RULE-006": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "RULE-007": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "RULE-008": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "details": [
+    {
+      "trace_id": "trace-accidental-deletion-001",
+      "fixture": "accidental-deletion.json",
+      "expected_rules": [
+        "RULE-006",
+        "RULE-004",
+        "RULE-001"
+      ],
+      "detected_rules": [
+        "RULE-006",
+        "RULE-004",
+        "RULE-001"
+      ],
+      "expected_first_event": "span-demo-006",
+      "detected_first_event": "span-demo-006",
+      "first_event_match": true,
+      "incidents_count": 1
+    },
+    {
+      "trace_id": "trace-path-traversal-002",
+      "fixture": "path-traversal.json",
+      "expected_rules": [
+        "RULE-007",
+        "RULE-001"
+      ],
+      "detected_rules": [
+        "RULE-007",
+        "RULE-001"
+      ],
+      "expected_first_event": "span-pt-003",
+      "detected_first_event": "span-pt-003",
+      "first_event_match": true,
+      "incidents_count": 1
+    },
+    {
+      "trace_id": "trace-protected-overwrite-003",
+      "fixture": "protected-overwrite.json",
+      "expected_rules": [
+        "RULE-002"
+      ],
+      "detected_rules": [
+        "RULE-002"
+      ],
+      "expected_first_event": "span-po-003",
+      "detected_first_event": "span-po-003",
+      "first_event_match": true,
+      "incidents_count": 1
+    },
+    {
+      "trace_id": "trace-repeated-tool-failure-004",
+      "fixture": "repeated-tool-failure.json",
+      "expected_rules": [
+        "RULE-005",
+        "RULE-004"
+      ],
+      "detected_rules": [
+        "RULE-005",
+        "RULE-004"
+      ],
+      "expected_first_event": "span-rtf-002",
+      "detected_first_event": "span-rtf-002",
+      "first_event_match": true,
+      "incidents_count": 1
+    },
+    {
+      "trace_id": "trace-invalid-arguments-005",
+      "fixture": "invalid-tool-arguments.json",
+      "expected_rules": [
+        "RULE-003",
+        "RULE-004"
+      ],
+      "detected_rules": [
+        "RULE-003",
+        "RULE-004"
+      ],
+      "expected_first_event": "span-ita-002",
+      "detected_first_event": "span-ita-002",
+      "first_event_match": true,
+      "incidents_count": 1
+    },
+    {
+      "trace_id": "trace-false-success-006",
+      "fixture": "false-success.json",
+      "expected_rules": [
+        "RULE-006",
+        "RULE-004"
+      ],
+      "detected_rules": [
+        "RULE-006",
+        "RULE-004"
+      ],
+      "expected_first_event": "span-fs-002",
+      "detected_first_event": "span-fs-002",
+      "first_event_match": true,
+      "incidents_count": 1
+    },
+    {
+      "trace_id": "trace-missing-validation-007",
+      "fixture": "missing-validation.json",
+      "expected_rules": [
+        "RULE-007"
+      ],
+      "detected_rules": [
+        "RULE-007"
+      ],
+      "expected_first_event": "span-mv-003",
+      "detected_first_event": "span-mv-003",
+      "first_event_match": true,
+      "incidents_count": 1
+    },
+    {
+      "trace_id": "trace-unexpected-file-change-008",
+      "fixture": "unexpected-file-change.json",
+      "expected_rules": [
+        "RULE-008"
+      ],
+      "detected_rules": [
+        "RULE-008"
+      ],
+      "expected_first_event": "span-ufc-002",
+      "detected_first_event": "span-ufc-002",
+      "first_event_match": true,
+      "incidents_count": 1
+    },
+    {
+      "trace_id": "trace-failed-permission-009",
+      "fixture": "failed-permission.json",
+      "expected_rules": [
+        "RULE-004"
+      ],
+      "detected_rules": [
+        "RULE-004"
+      ],
+      "expected_first_event": "span-fp-002",
+      "detected_first_event": "span-fp-002",
+      "first_event_match": true,
+      "incidents_count": 1
+    },
+    {
+      "trace_id": "trace-incomplete-010",
+      "fixture": "incomplete-trace.json",
+      "expected_rules": [
+        "RULE-007"
+      ],
+      "detected_rules": [
+        "RULE-007"
+      ],
+      "expected_first_event": "span-inc-002",
+      "detected_first_event": "span-inc-002",
+      "first_event_match": true,
+      "incidents_count": 1
+    },
+    {
+      "trace_id": "trace-clean-positive-011",
+      "fixture": "clean-run-positive.json",
+      "expected_rules": [],
+      "detected_rules": [],
+      "expected_first_event": null,
+      "detected_first_event": null,
+      "first_event_match": false,
+      "incidents_count": 0
+    }
+  ]
+}

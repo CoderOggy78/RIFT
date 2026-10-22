@@ -1,0 +1,47 @@
+{
+  "project": {
+    "id": "proj-streaming-pipeline",
+    "name": "Streaming Pipeline",
+    "description": "Kafka consumer stream worker"
+  },
+  "agent": {
+    "id": "agent-stream-worker",
+    "name": "Stream Pipeline Agent",
+    "framework": "Semantic Kernel v1.2"
+  },
+  "trace": {
+    "id": "trace-incomplete-010",
+    "objective": "Process real-time streaming partition.",
+    "status": "running",
+    "started_at": "2026-10-19T14:00:00.000Z",
+    "ended_at": null
+  },
+  "spans": [
+    {
+      "id": "span-inc-001",
+      "parent_span_id": null,
+      "event_type": "user_prompt",
+      "name": "Consume Partition",
+      "timestamp": "2026-10-19T14:00:00.100Z",
+      "duration_ms": 10.0,
+      "status": "success",
+      "input_data": { "partition": "topic-metrics-0" },
+      "output_data": {},
+      "error_data": {},
+      "metadata": {}
+    },
+    {
+      "id": "span-inc-002",
+      "parent_span_id": "span-inc-001",
+      "event_type": "tool_call",
+      "name": "tool:delete_file",
+      "timestamp": "2026-10-19T14:00:01.000Z",
+      "duration_ms": 15.0,
+      "status": "success",
+      "input_data": { "tool": "delete_file", "path": "tmp/scratch.lock" },
+      "output_data": {},
+      "error_data": {},
+      "metadata": { "is_destructive": true }
+    }
+  ]
+}

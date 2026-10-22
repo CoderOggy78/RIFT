@@ -1,0 +1,73 @@
+{
+  "project": {
+    "id": "proj-analytics-dashboard",
+    "name": "Analytics Dashboard",
+    "description": "User metric event processing pipeline"
+  },
+  "agent": {
+    "id": "agent-etl-runner",
+    "name": "ETL Ingestion Agent",
+    "framework": "LangGraph v0.1.2"
+  },
+  "trace": {
+    "id": "trace-repeated-tool-failure-004",
+    "objective": "Ingest user metrics from database connection.",
+    "status": "error",
+    "started_at": "2026-10-19T11:30:00.000Z",
+    "ended_at": "2026-10-19T11:30:20.000Z"
+  },
+  "spans": [
+    {
+      "id": "span-rtf-001",
+      "parent_span_id": null,
+      "event_type": "user_prompt",
+      "name": "User Query Request",
+      "timestamp": "2026-10-19T11:30:00.100Z",
+      "duration_ms": 10.0,
+      "status": "success",
+      "input_data": { "query": "Query aggregate daily signups table." },
+      "output_data": {},
+      "error_data": {},
+      "metadata": {}
+    },
+    {
+      "id": "span-rtf-002",
+      "parent_span_id": "span-rtf-001",
+      "event_type": "tool_call",
+      "name": "tool:read_file",
+      "timestamp": "2026-10-19T11:30:01.000Z",
+      "duration_ms": 120.0,
+      "status": "error",
+      "input_data": { "tool": "read_file", "path": "non_existent_data.csv" },
+      "output_data": {},
+      "error_data": { "error": "FileNotFoundError: [Errno 2] No such file or directory: 'non_existent_data.csv'" },
+      "metadata": {}
+    },
+    {
+      "id": "span-rtf-003",
+      "parent_span_id": "span-rtf-001",
+      "event_type": "tool_call",
+      "name": "tool:read_file",
+      "timestamp": "2026-10-19T11:30:03.000Z",
+      "duration_ms": 110.0,
+      "status": "error",
+      "input_data": { "tool": "read_file", "path": "non_existent_data.csv" },
+      "output_data": {},
+      "error_data": { "error": "FileNotFoundError: [Errno 2] No such file or directory: 'non_existent_data.csv'" },
+      "metadata": {}
+    },
+    {
+      "id": "span-rtf-004",
+      "parent_span_id": "span-rtf-001",
+      "event_type": "tool_call",
+      "name": "tool:read_file",
+      "timestamp": "2026-10-19T11:30:05.000Z",
+      "duration_ms": 115.0,
+      "status": "error",
+      "input_data": { "tool": "read_file", "path": "non_existent_data.csv" },
+      "output_data": {},
+      "error_data": { "error": "FileNotFoundError: [Errno 2] No such file or directory: 'non_existent_data.csv'" },
+      "metadata": {}
+    }
+  ]
+}

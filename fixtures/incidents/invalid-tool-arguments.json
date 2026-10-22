@@ -1,0 +1,50 @@
+{
+  "project": {
+    "id": "proj-dev-infra",
+    "name": "Developer Infrastructure",
+    "description": "Internal developer tooling scripts"
+  },
+  "agent": {
+    "id": "agent-linter",
+    "name": "Lint Automation Agent",
+    "framework": "LlamaIndex v0.10.0"
+  },
+  "trace": {
+    "id": "trace-invalid-arguments-005",
+    "objective": "Run code cleanup scripts with valid parameters.",
+    "status": "error",
+    "started_at": "2026-10-19T11:45:00.000Z",
+    "ended_at": "2026-10-19T11:45:05.000Z"
+  },
+  "spans": [
+    {
+      "id": "span-ita-001",
+      "parent_span_id": null,
+      "event_type": "user_prompt",
+      "name": "User Format Instruction",
+      "timestamp": "2026-10-19T11:45:00.100Z",
+      "duration_ms": 10.0,
+      "status": "success",
+      "input_data": { "query": "Write empty formatting output to destination." },
+      "output_data": {},
+      "error_data": {},
+      "metadata": {}
+    },
+    {
+      "id": "span-ita-002",
+      "parent_span_id": "span-ita-001",
+      "event_type": "tool_call",
+      "name": "tool:write_file",
+      "timestamp": "2026-10-19T11:45:01.000Z",
+      "duration_ms": 20.0,
+      "status": "error",
+      "input_data": {
+        "tool": "write_file",
+        "path": "   "
+      },
+      "output_data": {},
+      "error_data": { "error": "ValidationError: missing required field 'content', empty 'path'" },
+      "metadata": {}
+    }
+  ]
+}

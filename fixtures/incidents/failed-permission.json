@@ -1,0 +1,50 @@
+{
+  "project": {
+    "id": "proj-k8s-operator",
+    "name": "Kubernetes Cluster Operator",
+    "description": "Container pod autoscaler controller"
+  },
+  "agent": {
+    "id": "agent-cluster-janitor",
+    "name": "Node Maintenance Bot",
+    "framework": "LangChain v0.2.14"
+  },
+  "trace": {
+    "id": "trace-failed-permission-009",
+    "objective": "Restart daemon process on protected node system.",
+    "status": "error",
+    "started_at": "2026-10-19T13:30:00.000Z",
+    "ended_at": "2026-10-19T13:30:05.000Z"
+  },
+  "spans": [
+    {
+      "id": "span-fp-001",
+      "parent_span_id": null,
+      "event_type": "user_prompt",
+      "name": "Restart Daemon Request",
+      "timestamp": "2026-10-19T13:30:00.100Z",
+      "duration_ms": 10.0,
+      "status": "success",
+      "input_data": { "query": "Reload system node daemon." },
+      "output_data": {},
+      "error_data": {},
+      "metadata": {}
+    },
+    {
+      "id": "span-fp-002",
+      "parent_span_id": "span-fp-001",
+      "event_type": "tool_call",
+      "name": "tool:run_command",
+      "timestamp": "2026-10-19T13:30:01.000Z",
+      "duration_ms": 25.0,
+      "status": "error",
+      "input_data": { "command": "systemctl restart systemd-resolved" },
+      "output_data": {},
+      "error_data": {
+        "code": "EACCES",
+        "stderr": "Failed to restart systemd-resolved.service: Access denied. EACCES: permission denied."
+      },
+      "metadata": {}
+    }
+  ]
+}

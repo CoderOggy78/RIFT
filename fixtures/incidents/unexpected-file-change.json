@@ -1,0 +1,57 @@
+{
+  "project": {
+    "id": "proj-auth-service",
+    "name": "User Authentication API",
+    "description": "OAuth2 identity provider"
+  },
+  "agent": {
+    "id": "agent-state-checker",
+    "name": "State Audit Bot",
+    "framework": "Custom ReAct"
+  },
+  "trace": {
+    "id": "trace-unexpected-file-change-008",
+    "objective": "Verify repository filesystem snapshot integrity.",
+    "status": "error",
+    "started_at": "2026-10-19T13:00:00.000Z",
+    "ended_at": "2026-10-19T13:00:10.000Z"
+  },
+  "spans": [
+    {
+      "id": "span-ufc-001",
+      "parent_span_id": null,
+      "event_type": "user_prompt",
+      "name": "User Integrity Check",
+      "timestamp": "2026-10-19T13:00:00.100Z",
+      "duration_ms": 10.0,
+      "status": "success",
+      "input_data": { "query": "Audit repository manifest before and after execution." },
+      "output_data": {},
+      "error_data": {},
+      "metadata": {}
+    },
+    {
+      "id": "span-ufc-002",
+      "parent_span_id": "span-ufc-001",
+      "event_type": "tool_call",
+      "name": "tool:audit_filesystem",
+      "timestamp": "2026-10-19T13:00:02.000Z",
+      "duration_ms": 350.0,
+      "status": "success",
+      "input_data": { "scope": "full_repository" },
+      "output_data": {},
+      "error_data": {},
+      "metadata": {
+        "before_manifest": {
+          "src/auth.ts": { "hash": "sha256-a1b2c3d4e5" },
+          "src/index.ts": { "hash": "sha256-f6e5d4c3b2" },
+          "package.json": { "hash": "sha256-1122334455" }
+        },
+        "after_manifest": {
+          "src/index.ts": { "hash": "sha256-f6e5d4c3b2" },
+          "package.json": { "hash": "sha256-1122334455" }
+        }
+      }
+    }
+  ]
+}
